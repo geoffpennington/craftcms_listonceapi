@@ -10,8 +10,8 @@ List Once API Wrapper
 To install ListOnceAPI, follow these steps:
 
 1. Download & unzip the file and place the `listonceapi` directory into your `craft/plugins` directory
-2.  -OR- do a `git clone https://github.com/geoffpennington/listonceapi.git` directly into your `craft/plugins` folder.  You can then update it with `git pull`
-3.  -OR- install with Composer via `composer require geoffpennington/listonceapi`
+2.  -OR- do a `git clone https://github.com/geoffpennington/craftcms_listonceapi.git` directly into your `craft/plugins` folder.  You can then update it with `git pull`
+3.  -OR- install with Composer via `composer require geoffpennington/craftcms_listonceapi`
 4. Install plugin in the Craft Control Panel under Settings > Plugins
 5. The plugin folder should be named `listonceapi` for Craft to see it.  GitHub recently started appending `-master` (the branch name) to the name of the folder for zip file downloads.
 
@@ -49,8 +49,6 @@ return array(
 	),
 
 );
-
-if you do not have dev and/or staging API keys you can copy the listonceapi/api folder to the server you have api key for public/api, and update apiEndPoint accorianly.
 
 
 ## Using ListOnceAPI
@@ -109,19 +107,16 @@ getParams twig function checks query string for search params and creates string
 
 Some things to do, and ideas for potential features:
 
-Need to add OFI and Auction search.
-Need to add some caching
+* Need to add Auction search.
+* Need to add some caching
 
-* Release it
 
 ## ListOnceAPI Changelog
 
 ### 1 -- 2016.10.18
+### 2 -- 2016.10.24
+* Moved params array from into twigextensions function
+### 3 -- 2016.10.24
+* Added OFI search
 
-* Initial release
 
-Brought to you by [Geoff Pennington](http://bananaworks.co)
-=======
-# craftcms_listonceapi
-List Once API Plugin for Craft CMS
->>>>>>> 9887914021cc008232bf9a7304c381716adbc6dd

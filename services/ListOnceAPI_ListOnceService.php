@@ -70,6 +70,24 @@ craft()->listOnceAPI_listOnce->getSuburbs();
 
     }
 
+    /*
+---
+craft()->listOnceAPI_listOnce->searchInspectionTimes();
+
+     */
+
+    public function searchInspectionTimes($options) {
+
+        if($this->getAPILocal()){
+            $url = '' . $this->getAPIEndPoint() . 'api/search-inspection-times?api_key=' . $this->getAPIKey() . '&' . $options;
+        }else{
+            $url = '' . $this->getAPIEndPoint() . 'actions/listOnceAPI/listOnce/searchInspectionTimes?' . $options;
+        }
+
+        return $this->qryApi($url);
+
+    }
+
     public function qryApi($url) {
 
         $expire = 5;     

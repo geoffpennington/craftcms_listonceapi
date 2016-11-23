@@ -113,6 +113,7 @@ class ListOnceAPITwigExtension extends \Twig_Extension
           array("param" => strlen(craft()->request->getParam( 'street_name' )) ? 'street_name=' . craft()->request->getParam( 'street_name' ) : ''),
           array("param" => strlen(craft()->request->getParam( 'modified_from' )) ? 'modified_from=' . craft()->request->getParam( 'modified_from' ) : ''),
           array("param" => strlen(craft()->request->getParam( 'modified_to' )) ? 'modified_to=' . craft()->request->getParam( 'modified_to' ) : ''),
+          array("param" => strlen(craft()->request->getParam( 'unique_listings' )) ? 'unique_listings=' . craft()->request->getParam( 'unique_listings' ) : ''),
         );
 
         foreach ($params as $param) {
@@ -153,6 +154,15 @@ class ListOnceAPITwigExtension extends \Twig_Extension
     public function getSuburbs($options = null)
     {
          return craft()->listOnceAPI_listOnce->getSuburbs($options);
+    }
+
+    /**
+     *
+      * @return array|null
+     */
+    public function searchInspectionTimes($options = null)
+    {
+         return craft()->listOnceAPI_listOnce->searchInspectionTimes($options);
     }
 
     /**

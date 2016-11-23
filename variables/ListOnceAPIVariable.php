@@ -39,10 +39,20 @@ class ListOnceAPIVariable
     /**
      *
      *
-     *     {{ craft.listOnceAPI.getSuburbs() }}
+     *     {{ craft.listOnceAPI.getSuburbs(options) }}
      */
     public function getSuburbs($options)
     {
         return craft()->listOnceAPI_listOnce->getSuburbs($options);
+    }
+
+    /**
+     *
+     *
+     *     {{ craft.listOnceAPI.searchInspectionTimes(options) }}
+     */
+    public function searchInspectionTimes($options)
+    {
+        return craft()->listOnceAPI_listOnce->searchInspectionTimes($options);
     }
 }
