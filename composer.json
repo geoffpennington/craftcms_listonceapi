@@ -1,0 +1,14 @@
+{
+	"name": "geoffpennington/craftcms_listonceapi",
+	"description": "List Once API Plugin for Craft CMS",
+	"type": "craft-plugin",
+	"authors": [
+		{
+			"name": "Geoff Pennington",
+			"homepage": "http://bananaworks.co"
+		}
+	],
+	"require": {
+		"composer/installers": "~1.0"
+	}
+}
