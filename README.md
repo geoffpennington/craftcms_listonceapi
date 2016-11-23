@@ -27,25 +27,27 @@ update values for multi dev env in listonceapi/listonceapi.php and move to craft
 
 eg:
 return array(
+	// Settings that apply to all cases
 	'*' => array(
-		'listonceAPIkey' => 'yourAPIkey',
-		'apiEndPoint' => 'http://www.listonce.com.au/',
+	 	'listonceAPIkey' => 'xXXxxXxxXXxxXxXXXxXXxxXxxXXxxXx',
+	 	'apiEndPoint' => 'http://www.listonce.com.au/',
 	 	'apiLocal' => true,
 	),
 
 	// Staging
-	'jelliscraig.staging.nds.com.au' => array(
-		'listonceAPIkey' => 'yourStagingAPIkey',
-		'apiEndPoint' => 'http://www.listonce.com.au/',
+	'mySite.staging' => array(
+	 	'listonceAPIkey' => 'xXXxxXxxXXxxXxXXXxXXxxXxxXXxxXx',
+	 	'apiEndPoint' => 'http://www.listonce.com.au/',
 	 	'apiLocal' => true,
 	),
 
 	// Local development
-	'jc.dev' => array(
-		'listonceAPIkey' => 'yourDevAPIkey',
-		'apiEndPoint' => 'http://www.[yourProdServer].com.au/',
+	'mySite.dev' => array(
+	 	'listonceAPIkey' => 'xXXxxXxxXXxxXxXXXxXXxxXxxXXxxXx',
+	 	'apiEndPoint' => 'http://mySite.staging.somedomain.com/',
 	 	'apiLocal' => false,
 	),
+
 );
 
 if you do not have dev and/or staging API keys you can copy the listonceapi/api folder to the server you have api key for public/api, and update apiEndPoint accorianly.
