@@ -62,6 +62,7 @@ class ListOnceAPITwigExtension extends \Twig_Extension
             'getListing' => new \Twig_Function_Method($this, 'getListing'),
             'searchListings' => new \Twig_Function_Method($this, 'searchListings'),
             'getSuburbs' => new \Twig_Function_Method($this, 'getSuburbs'),
+            'searchInspectionTimes' => new \Twig_Function_Method($this, 'searchInspectionTimes'),
             'getAPIKey' => new \Twig_Function_Method($this, 'getAPIKey'),
             'getParams' => new \Twig_Function_Method($this, 'getParams'),
         );
@@ -71,13 +72,23 @@ class ListOnceAPITwigExtension extends \Twig_Extension
      *
       * @return string|null
      */
-    public function getParams()
+    public function getParams($options = null)
     {
 
         $urlParams = '';
+
+        $page = isset($options['page']) ? 'page=' . $options['page'] : 'page=1';
+        $per_page = isset($options['per_page']) ? 'per_page=' . $options['per_page'] : 'per_page=12';
+        $listing_type = isset($options['listing_type']) ? 'listing_type=' . $options['listing_type'] : 'listing_type=sale';
+        $property_status = isset($options['property_status']) ? 'property_status=' . $options['property_status'] : 'property_status=available';
+        $archive = isset($options['archive']) ? 'archive=' . $options['archive'] : 'archive=1';
+
         $params = array(
-          array("param" => strlen(craft()->request->getParam( 'page' )) ? 'page=' . craft()->request->getParam( 'page' ) : 'page=1'),
-          array("param" => strlen(craft()->request->getParam( 'per_page' )) ? 'per_page=' . craft()->request->getParam( 'per_page' ) : 'per_page=12'),
+          array("param" => strlen(craft()->request->getParam( 'page' )) ? 'page=' . craft()->request->getParam( 'page' ) : $page),
+          array("param" => strlen(craft()->request->getParam( 'per_page' )) ? 'per_page=' . craft()->request->getParam( 'per_page' ) : $per_page),
+          array("param" => strlen(craft()->request->getParam( 'listing_type' )) ? 'listing_type=' . craft()->request->getParam( 'listing_type' ) : $listing_type),
+          array("param" => strlen(craft()->request->getParam( 'property_status' )) ? 'property_status=' . craft()->request->getParam( 'property_status' ) : $property_status),
+          
           array("param" => strlen(craft()->request->getParam( 'order_by' )) ? 'order_by=' . craft()->request->getParam( 'order_by' ) :  'order_by=listing_id'),
           array("param" => strlen(craft()->request->getParam( 'order_asc' )) ? 'order_asc=' . craft()->request->getParam( 'order_asc' ) : 'order_asc=0'),
           array("param" => strlen(craft()->request->getParam( 'suburb' )) ? 'suburb=' . craft()->request->getParam( 'suburb' ) : ''),
@@ -85,8 +96,6 @@ class ListOnceAPITwigExtension extends \Twig_Extension
           array("param" => strlen(craft()->request->getParam( 'postcode' )) ? 'postcode=' . craft()->request->getParam( 'postcode' ) : ''),
           array("param" => strlen(craft()->request->getParam( 'state' )) ? 'state=' . craft()->request->getParam( 'state' ) : ''),
           array("param" => strlen(craft()->request->getParam( 'property_type' )) ? 'property_type=' . craft()->request->getParam( 'property_type' ) : ''),
-          array("param" => strlen(craft()->request->getParam( 'listing_type' )) ? 'listing_type=' . craft()->request->getParam( 'listing_type' ) : 'listing_type=sale'),
-          array("param" => strlen(craft()->request->getParam( 'property_status' )) ? 'property_status=' . craft()->request->getParam( 'property_status' ) : 'property_status=available'),
           array("param" => strlen(craft()->request->getParam( 'agent_id' )) ? 'agent_id=' . craft()->request->getParam( 'agent_id' ) : ''),
           array("param" => strlen(craft()->request->getParam( 'category' )) ? 'category=' . craft()->request->getParam( 'category' ) : ''),
           array("param" => strlen(craft()->request->getParam( 'subcategory' )) ? 'subcategory=' . craft()->request->getParam( 'subcategory' ) : ''),
