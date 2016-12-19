@@ -63,6 +63,7 @@ class ListOnceAPITwigExtension extends \Twig_Extension
             'searchListings' => new \Twig_Function_Method($this, 'searchListings'),
             'getSuburbs' => new \Twig_Function_Method($this, 'getSuburbs'),
             'searchInspectionTimes' => new \Twig_Function_Method($this, 'searchInspectionTimes'),
+            'getFeatureListings' => new \Twig_Function_Method($this, 'getFeatureListings'),
             'getAPIKey' => new \Twig_Function_Method($this, 'getAPIKey'),
             'getParams' => new \Twig_Function_Method($this, 'getParams'),
         );
@@ -172,6 +173,15 @@ class ListOnceAPITwigExtension extends \Twig_Extension
     public function searchInspectionTimes($options = null)
     {
          return craft()->listOnceAPI_listOnce->searchInspectionTimes($options);
+    }
+
+    /**
+     *
+      * @return array|null
+     */
+    public function getFeatureListings()
+    {
+         return craft()->listOnceAPI_listOnce->getFeatureListings();
     }
 
     /**

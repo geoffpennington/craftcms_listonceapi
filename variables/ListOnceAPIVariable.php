@@ -55,4 +55,14 @@ class ListOnceAPIVariable
     {
         return craft()->listOnceAPI_listOnce->searchInspectionTimes($options);
     }
+
+    /**
+     *
+     *
+     *     {{ craft.listOnceAPI.getFeatureListings() }}
+     */
+    public function getFeatureListings()
+    {
+        return craft()->listOnceAPI_listOnce->getFeatureListings();
+    }
 }

@@ -78,6 +78,7 @@ craft()->listOnceAPI_listOnce->searchInspectionTimes();
 
     public function searchInspectionTimes($options) {
 
+
         if($this->getAPILocal()){
             $url = '' . $this->getAPIEndPoint() . 'api/search-inspection-times?api_key=' . $this->getAPIKey() . '&' . $options;
         }else{
@@ -88,9 +89,27 @@ craft()->listOnceAPI_listOnce->searchInspectionTimes();
 
     }
 
+    /*
+---
+craft()->listOnceAPI_listOnce->featureListings();
+
+     */
+
+    public function getFeatureListings() {
+
+        if($this->getAPILocal()){
+            $url = '' . $this->getAPIEndPoint() . 'api/get-featured-listings?api_key=' . $this->getAPIKey();
+        }else{
+            $url = '' . $this->getAPIEndPoint() . 'actions/listOnceAPI/listOnce/getFeatureListings?';
+        }
+
+        return $this->qryApi($url);
+
+    }
+
     public function qryApi($url) {
 
-        $expire = 5;     
+        $expire = 360;     
 
         // Check to see if the response is cached
         $cachedResponse = craft()->fileCache->get($url);

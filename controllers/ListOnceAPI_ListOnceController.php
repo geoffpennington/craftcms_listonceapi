@@ -23,7 +23,7 @@ class ListOnceAPI_ListOnceController extends BaseController
      * @var    bool|array Allows anonymous access to this controller's actions.
      * @access protected
      */
-    protected $allowAnonymous = array('actionGetListing', 'actionSearchListings', 'actionGetSuburbs', 'actionSearchInspectionTimes' );
+    protected $allowAnonymous = array('actionGetListing', 'actionSearchListings', 'actionGetSuburbs', 'actionSearchInspectionTimes', 'actionGetFeatureListings' );
     //protected $allowAnonymous = true;
 
 
@@ -60,6 +60,13 @@ class ListOnceAPI_ListOnceController extends BaseController
         $options = craft()->request->getQueryString();
 
         $result = craft()->listOnceAPI_listOnce->searchInspectionTimes($options);
+
+        $this->returnJson($result);
+    }
+
+    public function actionGetFeatureListings()
+    {
+        $result = craft()->listOnceAPI_listOnce->getFeatureListings();
 
         $this->returnJson($result);
     }
