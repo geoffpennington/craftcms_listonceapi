@@ -28,7 +28,7 @@ craft()->listOnceAPI_listOnce->getListing($id);
             $url = '' . $this->getAPIEndPoint() . 'api/get-listing?api_key=' . $this->getAPIKey() . '&listing_id=' . $id;
         }else{
             $url = '' . $this->getAPIEndPoint() . 'actions/listOnceAPI/listOnce/getListing?listing_id=' . $id;
-        }       
+        }
 
         return $this->qryApi($url);
 
@@ -91,7 +91,7 @@ craft()->listOnceAPI_listOnce->searchInspectionTimes();
 
     /*
 ---
-craft()->listOnceAPI_listOnce->featureListings();
+craft()->listOnceAPI_listOnce->getFeatureListings();
 
      */
 
@@ -107,9 +107,27 @@ craft()->listOnceAPI_listOnce->featureListings();
 
     }
 
+    /*
+---
+craft()->listOnceAPI_listOnce->getAgents();
+
+     */
+
+    public function getAgents($options) {
+
+        if($this->getAPILocal()){
+            $url = '' . $this->getAPIEndPoint() . 'api/get-agents?api_key=' . $this->getAPIKey() . '&' . $options;
+        }else{
+            $url = '' . $this->getAPIEndPoint() . 'actions/listOnceAPI/listOnce/getAgents?' . $options;
+        }
+
+        return $this->qryApi($url);
+
+    }
+
     public function qryApi($url) {
 
-        $expire = 360;     
+        $expire = 360;
 
         // Check to see if the response is cached
         $cachedResponse = craft()->fileCache->get($url);

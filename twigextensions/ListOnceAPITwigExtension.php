@@ -64,6 +64,7 @@ class ListOnceAPITwigExtension extends \Twig_Extension
             'getSuburbs' => new \Twig_Function_Method($this, 'getSuburbs'),
             'searchInspectionTimes' => new \Twig_Function_Method($this, 'searchInspectionTimes'),
             'getFeatureListings' => new \Twig_Function_Method($this, 'getFeatureListings'),
+            'getAgents' => new \Twig_Function_Method($this, 'getAgents'),
             'getAPIKey' => new \Twig_Function_Method($this, 'getAPIKey'),
             'getParams' => new \Twig_Function_Method($this, 'getParams'),
         );
@@ -89,7 +90,7 @@ class ListOnceAPITwigExtension extends \Twig_Extension
           array("param" => strlen(craft()->request->getParam( 'per_page' )) ? 'per_page=' . craft()->request->getParam( 'per_page' ) : $per_page),
           array("param" => strlen(craft()->request->getParam( 'listing_type' )) ? 'listing_type=' . craft()->request->getParam( 'listing_type' ) : $listing_type),
           array("param" => strlen(craft()->request->getParam( 'property_status' )) ? 'property_status=' . craft()->request->getParam( 'property_status' ) : $property_status),
-          
+
           array("param" => strlen(craft()->request->getParam( 'order_by' )) ? 'order_by=' . craft()->request->getParam( 'order_by' ) :  'order_by=listing_id'),
           array("param" => strlen(craft()->request->getParam( 'order_asc' )) ? 'order_asc=' . craft()->request->getParam( 'order_asc' ) : 'order_asc=0'),
           array("param" => strlen(craft()->request->getParam( 'suburb' )) ? 'suburb=' . craft()->request->getParam( 'suburb' ) : ''),
@@ -182,6 +183,15 @@ class ListOnceAPITwigExtension extends \Twig_Extension
     public function getFeatureListings()
     {
          return craft()->listOnceAPI_listOnce->getFeatureListings();
+    }
+
+    /**
+     *
+      * @return array|null
+     */
+    public function getAgents($options = null)
+    {
+         return craft()->listOnceAPI_listOnce->getAgents($options);
     }
 
     /**

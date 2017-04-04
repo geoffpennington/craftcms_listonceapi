@@ -65,4 +65,13 @@ class ListOnceAPIVariable
     {
         return craft()->listOnceAPI_listOnce->getFeatureListings();
     }
+    /**
+     *
+     *
+     *     {{ craft.listOnceAPI.getAgents() }}
+     */
+    public function getAgents($options)
+    {
+        return craft()->listOnceAPI_listOnce->getAgents($options);
+    }
 }
